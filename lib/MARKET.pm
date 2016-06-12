@@ -8,11 +8,14 @@ use CGI;
 sub print_DEBUG
 {
     my ($self, $message) = @_;
-    print "
-<pre>
-$message
-</pre>\n";
-    
+    print "<pre> $message </pre>\n";    
+    return 0;
+}
+
+sub print_ERROR
+{
+    my ($self, $message) = @_;
+    print qq(<font size="4" color="red">$message</font>\n);    
     return 0;
 }
 
