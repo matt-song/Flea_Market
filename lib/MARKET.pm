@@ -50,8 +50,7 @@ sub executeSQL
     }
     else
     {
-        print_DEBUG('self', "the sql output is [$output]") if $DEBUG;
-        return 0;
+        return $output;
     }
 
 }
