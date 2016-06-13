@@ -6,7 +6,7 @@ use CGI::Session;
 use lib '/opt/web/market/lib/';
 use MARKET;
 
-my $DEBUG = 1; 
+my $DEBUG = 0; 
 my $upload_folder = '/opt/web/market/upload';
 
 my $cgi = CGI->new;
@@ -29,15 +29,15 @@ errorOut("Missing value, please check the form and sumbit again!") if ((!$Form_u
 # check if we have any invalid input, if so, return a error message
 if ($Form_uName !~ /^[\w\s]+$/)
 {
-    errorOut("Invalid user name [$Form_uName]");
+    errorOut("Invalid user name [$Form_uName], must be [a-z, 0-9]");
 }
 elsif ($Form_uID !~ /^\d+$/)
 {
-    errorOut("Invalid User ID [$Form_uID]");
+    errorOut("Invalid User ID [$Form_uID], must be [0-9]");
 }
 elsif ($Form_dName !~ /^[\w\s]+$/)
 {
-    errorOut("Invalid donation name [$Form_dName]");
+    errorOut("Invalid donation name [$Form_dName], must be [a-z, 0-9]");
 }
 
 # upload the image
@@ -45,6 +45,10 @@ my $uploadImageName = uploadFile($Form_uID);
 
 # update the DB
 MARKET->updateDonationDB($Form_uID, $Form_uName, $Form_dName, $Form_dCategory, $uploadImageName);
+
+# print thanks page if submit successful
+print qq(<font size="4" color="Green">Upload successful, thank you!</font>\n);
+print qq(<p><a href="/market/formUpdate.html">Back</a></p>);
 
 sub errorOut
 {

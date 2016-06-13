@@ -4,7 +4,7 @@ use strict;
 use Data::Dumper;
 use CGI;
 
-my $DEBUG = 1;
+my $DEBUG = 0;
 my $DB = "/opt/web/market/db/market.db";
 
 ## print the debug message.
