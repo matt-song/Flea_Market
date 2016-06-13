@@ -19,4 +19,7 @@ Alias /market /opt/web/market
     AddHandler cgi-script .cgi .pl
 
 </Directory>
+
+sqlite> .schema
+CREATE TABLE Donation ( uid int, uName varchar(255), dCategory varchar(255), dName varchar(255), dPrice int,dImage varchar(255), soldOut int);
 ```

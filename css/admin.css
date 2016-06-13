@@ -15,9 +15,9 @@ body * {
 }
 
 img {
-  /*border-radius: 50%;*/
-  height: 60px;
-  width: 60px;
+  border-radius: 10%;
+  height: 40px;
+  width: 40px;
 }
 
 .Donation-Table {
@@ -40,11 +40,12 @@ table td, table th {
 table td {
   text-align: center;
   vertical-align: middle;
+  text-align:center;
 }
 table td:last-child {
   font-size: 0.95em;
   line-height: 1.4;
-  text-align: left;
+  text-align: center;
 }
 table th {
   background-color: #daeff1;

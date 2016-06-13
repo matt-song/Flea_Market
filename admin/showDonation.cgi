@@ -8,7 +8,7 @@ use MARKET;
 
 my $DEBUG = 0; 
 my $upload_folder = '/opt/web/market/upload';
-my $ImgURLPath = '/market/upload/';
+my $ImgURLPath = '/market/upload';
 my $defaultImage = '/market/img/pictureIsMissing.png';
 
 
@@ -29,6 +29,7 @@ print qq(
         
             <table cellspacing="0">
                 <tr>
+                    <th>Sold Out</th>
                     <th>UID</th>
                     <th>User Name</th>
                     <th>Goods Name</th>
@@ -40,14 +41,16 @@ print qq(
 
 foreach my $entry (split(/^/,$output))
 {
-    my ($uID,$uName,$dName,$dCategory,$dPrice,$dImageName) = split(/\|/,$entry);
-    # MARKET->print_DEBUG("$uID $uName $dName $dCategory $dImageName");
+    chomp($entry);
+    my ($uID,$uName,$dCategory,$dName,$dPrice,$dImageName,$dSoldOut) = split(/\|/,$entry);
     
     my $imageURL = "$ImgURLPath/$dImageName";
     my $Category = MARKET->getCategoryByID($dCategory);
+    my $isSoldOut = ($dSoldOut)?qq(<font color="red">Yes</font>):qq(<font color="green">No</font>);
 
     print qq(
                 <tr>
+                    <td>$isSoldOut</td>
                     <td>$uID</td>
                     <td>$uName</td>
                     <td>$dName</td>
