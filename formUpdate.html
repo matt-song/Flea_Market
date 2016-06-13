@@ -5,31 +5,54 @@
 </head>
 
 <html>
-<body>
 
-    <!-- must add ENCTYPE='multipart/form-data' so the html will allow upload files -->
-    <form name="input" action="bin/updateDonationDB.cgi" method="post" ENCTYPE='multipart/form-data'>
+    <body>
+    <div class="main-wrapper">
+    <h3>Welcome to EMC Flea Market</h3>
 
-        User Name: <input type="text" name="uName" />
-        <br />
-        Badge ID: <input type="text" name="uID" />
-        <br />
-        Donation: <input type="text" name="dName" />
-        <br />
-        Category
-        <select name="dCategory">
-            <option value="1" selected="selected">Others</option>
-            <option value="2">books</option>
-            <option value="3">clothes</option>
-            <option value="4">money</option>
-        </select>
-        <br />
-        Image: <input type="file" name="dImage" accept="image" />
-        <br />
+        <div class="form-wrapper">
 
-        <input type="submit" value="Submit" />
+            <!-- must add ENCTYPE='multipart/form-data' so the html will allow upload files -->
+            <form name="updateDonationDB" action="bin/updateDonationDB.cgi" method="post" ENCTYPE='multipart/form-data'>
 
-    </form>
+                <div>
+                    <input type="text" name="uName" id="uName" placeholder="Input your user Name" />
+                </div>
 
-</body>
+
+                <div>
+                    <input type="text" name="uID" id="uID" placeholder="Input your badge ID" />
+                </div>
+
+
+                <div>
+                    <input type="text" name="dName" id="dName" placeholder="Input the good's name" />
+                </div>
+
+                <div>
+                    <label for="project-image">
+                    Please choose the category of the goods
+                    </label>
+                        <select name="dCategory">
+                        <option value="1" selected="selected">Others</option>
+                        <option value="2">books</option>
+                        <option value="3">clothes</option>
+                        <option value="4">money</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="project-image">
+                    Please upload the image of the donation
+                    </label>
+                    <input type="file" name="dImage" id="dImage" />
+                </div>
+
+                <div class="button">
+                    <input type="submit" value="Upload" />
+                </div>
+                
+            </form>
+
+    </body>
 </html>

@@ -1,0 +1,104 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:700&subset=latin,latin-ext);
+body {
+  background-color: WhiteSmoke;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+form {
+  padding-top: 10px;
+  font-size: 0;
+}
+form div {
+  border: none;
+  min-width: 0;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+form div label {
+  display: block;
+  padding-bottom: 15px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: left;
+  padding-right: 10px;
+}
+form div label i {
+  font-style: normal;
+  display: block;
+}
+form div input {
+  border: 1px solid #8f8f8f;
+  padding: 10px 20px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+form div input:focus {
+  border: 1px solid #39bda7;
+}
+
+.radio-button {
+  display: inline-block;
+  text-align: center;
+  width: 33%;
+}
+.radio-button label, .radio-button input {
+  display: inline-block;
+  text-align: center;
+  width: auto;
+}
+
+select {
+
+  border: 1px solid #8f8f8f;
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+}
+
+input {
+  width: 100%;
+  display: block;
+}
+
+input[type="file"] {
+  background-color: #ffffff;
+}
+
+input[type="submit"] {
+  display: block;
+  background-color: #39bda7;
+  cursor: pointer;
+  color: #ffffff;
+  border-color: #33a996;
+  transition: all 0.2s ease-in;
+  min-width: 100%;
+}
+input[type="submit"]:hover {
+  border-color: #33a996;
+}
+
+h3 {
+  text-align: center;
+  font-size: 24px;
+}
+
+.button {
+  padding-top: 25px;
+  padding-top: 40px;
+}
+
+.main-wrapper {
+  clear: both;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form-wrapper {
+  width: 480px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}

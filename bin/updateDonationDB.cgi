@@ -7,7 +7,7 @@ use lib '/opt/web/market/lib/';
 use MARKET;
 
 my $DEBUG = 1; 
-my $upload_folder = '/opt/web/market/img';
+my $upload_folder = '/opt/web/market/upload';
 
 my $cgi = CGI->new;
 print $cgi->header;
