@@ -24,11 +24,20 @@ my $Form_dImage = $cgi->param("dImage");
 MARKET->print_DEBUG("User Name: [$Form_uName]\nUID: [$Form_uID]\nGood Name: [$Form_dName]\nCategroy: [$Form_dCategory]\nImage: [$Form_dImage]") if ($DEBUG);
 
 # check if any value is missing
-if ((!$Form_uName)||(!$Form_uID)||(!$Form_dName)||(!$Form_dImage)) 
+errorOut("Missing value, please check the form and sumbit again!") if ((!$Form_uName)||(!$Form_uID)||(!$Form_dName)||(!$Form_dImage));
+
+# check if we have any invalid input, if so, return a error message
+if ($Form_uName !~ /^[\w\s]+$/)
 {
-    MARKET->print_ERROR("Missing value, please check the form and sumbit again!");
-    print $cgi->end_html;
-    exit 1;
+    errorOut("Invalid user name [$Form_uName]");
+}
+elsif ($Form_uID !~ /^\d+$/)
+{
+    errorOut("Invalid User ID [$Form_uID]");
+}
+elsif ($Form_dName !~ /^[\w\s]+$/)
+{
+    errorOut("Invalid donation name [$Form_dName]");
 }
 
 # upload the image
@@ -37,6 +46,13 @@ my $uploadImageName = uploadFile($Form_uID);
 # update the DB
 MARKET->updateDonationDB($Form_uID, $Form_uName, $Form_dName, $Form_dCategory, $uploadImageName);
 
+sub errorOut
+{
+    my $message = shift;
+    MARKET->print_ERROR($message);
+    print $cgi->end_html;
+    exit 1;
+}
 
 sub uploadFile
 {
@@ -58,3 +74,4 @@ sub uploadFile
 }
 
 print $cgi->end_html;
+
