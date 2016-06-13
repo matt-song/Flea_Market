@@ -18,25 +18,24 @@ print $cgi->header;
 print $cgi->start_html( -title=>'EMC Flea Market Report',
         -style=>{-src=>'/market/css/admin.css'}
 );
+print qq(<link rel="stylesheet" href="/market/css/normalize.css">);
 
 my $output = MARKET->executeSQL("select * from Donation");
 MARKET->print_DEBUG($output) if $DEBUG;
 
 print qq(
-  <body>
-
-    <div class="row">
-    <div class="large-12 columns">
-        <table class="fixed-table">
-            <thead>
-                <th>UID</th>
-                <th>User Name</th>
-                <th>Goods Name</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Image</th>
-            </thead>
-            <tbody>
+    <div class="Donation-Table">
+        <div class="header">EMC Flea Market Report</div>
+        
+            <table cellspacing="0">
+                <tr>
+                    <th>UID</th>
+                    <th>User Name</th>
+                    <th>Goods Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                </tr>
 );
 
 foreach my $entry (split(/^/,$output))
@@ -45,13 +44,14 @@ foreach my $entry (split(/^/,$output))
     # MARKET->print_DEBUG("$uID $uName $dName $dCategory $dImageName");
     
     my $imageURL = "$ImgURLPath/$dImageName";
+    my $Category = MARKET->getCategoryByID($dCategory);
 
     print qq(
                 <tr>
                     <td>$uID</td>
                     <td>$uName</td>
                     <td>$dName</td>
-                    <td>$dCategory</td>
+                    <td>$Category</td>
                     <td>$dPrice</td>
                     <td><a href="$imageURL"><img src="$imageURL" style="width:200px;height:150px;" /></a></td>
                 </tr>
@@ -59,10 +59,9 @@ foreach my $entry (split(/^/,$output))
 }
 
 print qq(
-            </tbody>
-        </table>
+            </table>
+        </div>
     </div>
-</div>
 
 </body>
 </html>

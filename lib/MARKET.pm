@@ -7,6 +7,19 @@ use CGI;
 my $DEBUG = 0;
 my $DB = "/opt/web/market/db/market.db";
 
+sub getCategoryByID
+{
+    my ($self,$id) = @_;
+    my $hash = {
+        '1' => 'Ohters',
+        '2' => 'Books',
+        '3' => 'Clothes',
+        '4' => 'Stationery',
+        '5' => 'Money',
+    };
+    return $hash->{$id};
+}
+
 ## print the debug message.
 sub print_DEBUG
 {
