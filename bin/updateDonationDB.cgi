@@ -18,10 +18,11 @@ my $Form_uName = $cgi->param("uName");
 my $Form_uID = $cgi->param("uID");
 my $Form_dName = $cgi->param("dName");
 my $Form_dCategory = $cgi->param("dCategory");
+my $Form_dPrice = $cgi->param("dPrice");
 my $Form_dImage = $cgi->param("dImage");
 
 # print debug message
-MARKET->print_DEBUG("User Name: [$Form_uName]\nUID: [$Form_uID]\nGood Name: [$Form_dName]\nCategroy: [$Form_dCategory]\nImage: [$Form_dImage]") if ($DEBUG);
+MARKET->print_DEBUG("User Name: [$Form_uName]\nUID: [$Form_uID]\nGood Name: [$Form_dName]\nCategroy: [$Form_dCategory]\nPrice: [$Form_dPrice]\nImage: [$Form_dImage]") if ($DEBUG);
 
 # check if any value is missing
 errorOut("Missing value, please check the form and sumbit again!") if ((!$Form_uName)||(!$Form_uID)||(!$Form_dName)||(!$Form_dImage));
@@ -39,12 +40,16 @@ elsif ($Form_dName !~ /^[\w\s]+$/)
 {
     errorOut("Invalid donation name [$Form_dName], must be [a-z, 0-9]");
 }
+elsif ($Form_dPrice !~ /^\d+$/)
+{
+    errorOut("Invalid donation price [$Form_dPrice], must be [0-9]");
+}
 
 # upload the image
 my $uploadImageName = uploadFile($Form_uID);
 
 # update the DB
-MARKET->updateDonationDB($Form_uID, $Form_uName, $Form_dName, $Form_dCategory, $uploadImageName);
+MARKET->updateDonationDB($Form_uID, $Form_uName, $Form_dName, $Form_dCategory, $Form_dPrice, $uploadImageName);
 
 # print thanks page if submit successful
 print qq(<font size="4" color="Green">Upload successful, thank you!</font>\n);

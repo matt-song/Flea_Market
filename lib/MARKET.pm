@@ -25,9 +25,9 @@ sub print_ERROR
 ### update the Donation table
 sub updateDonationDB
 {
-    my ($self, $uid, $uName, $dName, $dCategory, $imageName) = @_;
+    my ($self, $uid, $uName, $dName, $dCategory, $dPrice, $imageName) = @_;
 
-    my $sqlCMD = qq(INSERT INTO Donation VALUES ('$uid','$uName','$dName','$dCategory','$imageName'););
+    my $sqlCMD = qq(INSERT INTO Donation VALUES ('$uid','$uName','$dName','$dCategory','$dPrice','$imageName'););
     print_DEBUG('self', "the sql command is [$sqlCMD]") if $DEBUG;
 
     &executeSQL('self', $sqlCMD);
