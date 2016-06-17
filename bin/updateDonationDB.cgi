@@ -50,7 +50,7 @@ my $uploadImageName = uploadFile($Form_uID);
 
 # update the DB
 # CREATE TABLE Donation ( uid int,  uName varchar(255), dCategory varchar(255), dName varchar(255), dPrice int,dImage varchar(255), soldOut int);
-MARKET->updateDonationDB($Form_uID, $Form_uName, $Form_dCategory, $Form_dName, $Form_dPrice, $uploadImageName);
+MARKET->updateDonationDB('NULL',$Form_uID, $Form_uName, $Form_dCategory, $Form_dName, $Form_dPrice, $uploadImageName);
 
 # print thanks page if submit successful
 print qq(<font size="4" color="Green">Upload successful, thank you!</font>\n);

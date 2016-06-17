@@ -21,5 +21,6 @@ Alias /market /opt/web/market
 </Directory>
 
 sqlite> .schema
-CREATE TABLE Donation ( uid int, uName varchar(255), dCategory varchar(255), dName varchar(255), dPrice int,dImage varchar(255), soldOut int);
+CREATE TABLE Donation (id INTEGER PRIMARY KEY, uid int, uName varchar(255), dCategory varchar(255), dName varchar(255), dPrice int,dImage varchar(255), soldOut int);
+
 ```
